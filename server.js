@@ -8,7 +8,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
     res.sendFile('/Users/rebeccahorwitz/Desktop/projects/crud-express-mongo' + '/index.html');
-    // console.log(_dirname);
+    var cursor = db.collection('quotes').find();
+    db.collection('quotes').find().toArray(function (err, results) {
+        console.log(results);
+    });
 });
 
 app.post('/quotes', (req, res) => {
