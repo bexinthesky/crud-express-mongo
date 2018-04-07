@@ -18,6 +18,8 @@ MongoClient.connect('mongodb://R2-D2:whistlewhistlebeep@ds014118.mlab.com:14118/
 // middlewares
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
+app.use(bodyParser.json());
 
 // handlers
 app.get('/', (req, res) => {
@@ -37,3 +39,6 @@ app.post('/quotes', (req, res) => {
     });
 });
 
+app.put('/quotes', (req, res) => {
+    // Handle put request
+});
