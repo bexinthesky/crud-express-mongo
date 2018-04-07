@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', (req, res) => {
     db.collection('quotes').find().toArray((err, result) => {
         if (err) return console.log(err);
+        // renders index.ejs
         res.render('index.ejs', {quotes: result});
     });
 });
