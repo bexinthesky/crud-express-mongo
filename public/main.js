@@ -11,13 +11,11 @@ update.addEventListener('click', function () {
             'name': 'Darth Vader',
             'quote': 'I find your lack of faith disturbing.'
         })
-    })
-        .then(response => {
-            if (response.ok) return response.json()
-        })
-        .then(data => {
-            console.log(data)
-        })
+    }).then(response => {
+            if (response.ok) return response.json();
+        }).then(data => {
+            console.log(data);
+        });
 });
 
 del.addEventListener('click', function() {
@@ -29,12 +27,10 @@ del.addEventListener('click', function() {
         body: JSON.stringify({
             'name': 'Darth Vader'
         })
-    })
-        .then(res => {
-            if (res.ok) return res.json()
-        })
-        .then(data => {
+    }).then(res => {
+            if (res.ok) return res.json();
+        }).then(data => {
             console.log(data);
-            window.location.reload();
-        })
+            window.location.reload(true);
+        });
 });

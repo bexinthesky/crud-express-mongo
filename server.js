@@ -1,9 +1,8 @@
-console.log('May Node be with you');
-
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
-const bodyParser = require('body-parser');
 const app = express();
+const bodyParser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient;
+
 var db;
 
 // connect to mongo
@@ -18,8 +17,8 @@ MongoClient.connect('mongodb://R2-D2:whistlewhistlebeep@ds014118.mlab.com:14118/
 // middlewares
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 // handlers
 app.get('/', (req, res) => {
@@ -48,13 +47,16 @@ app.put('/quotes', (req, res) => {
     }, {
             sort: { _id: -1 },
             upsert: true
-        },
-        (err, result) => {
-            if (err) return res.send(err)
-            res.send(result)
-        })
+        }, (err, result) => {
+            if (err) return res.send(err);
+            res.send(result);
+        });
 });
 
 app.delete('/quotes', (req, res) => {
     // Handle delete event here
-})
+    db.collection('quotes').findOneAndDelete({ name: req.body.name }, (err, result) => {
+        if (err) return res.send(500, err);
+        res.send({ message: 'A Darth Vader quote was deleted' });
+    });
+});
