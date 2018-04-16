@@ -9,5 +9,11 @@ update.addEventListener('click', function () {
             'name': 'Darth Vader',
             'quote': 'I find your lack of faith disturbing.'
         })
-    });
+    })
+    .then(response => {
+        if (response.ok) return response.json()
+    })
+    .then(data => {
+        console.log(data)
+    })
 });

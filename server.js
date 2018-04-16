@@ -54,10 +54,3 @@ app.put('/quotes', (req, res) => {
             res.send(result)
         })
 });
-
-fetch({ /* request */ }).then(res => {
-    if (res.ok) return res.json()
-}).then(data => {
-    console.log(data);
-    window.location.reload(true);
-});
