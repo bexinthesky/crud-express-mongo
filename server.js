@@ -17,7 +17,7 @@ MongoClient.connect('mongodb://R2-D2:whistlewhistlebeep@ds014118.mlab.com:14118/
 
 // middlewares
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -26,14 +26,13 @@ app.get('/', (req, res) => {
     db.collection('quotes').find().toArray((err, result) => {
         if (err) return console.log(err);
         // renders index.ejs
-        res.render('index.ejs', {quotes: result});
+        res.render('index.ejs', { quotes: result });
     });
 });
 
 app.post('/quotes', (req, res) => {
     db.collection('quotes').save(req.body, (err, result) => {
         if (err) return console.log(err);
-
         console.log('saved to database');
         res.redirect('/');
     });
@@ -41,4 +40,24 @@ app.post('/quotes', (req, res) => {
 
 app.put('/quotes', (req, res) => {
     // Handle put request
+    db.collections('quotes').findOneAndUpdate({ name: 'Yoda' }, {
+        $set: {
+            name: req.body.name,
+            quote: req.body.quote
+        }
+    }, {
+            sort: { _id: -1 },
+            upsert: true
+        },
+        (err, result) => {
+            if (err) return res.send(err)
+            res.send(result)
+        })
+});
+
+fetch({ /* request */ }).then(res => {
+    if (res.ok) return res.json()
+}).then(data => {
+    console.log(data);
+    window.location.reload(true);
 });
