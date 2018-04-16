@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My App</title>
-</head>
+</head2
 <body>
-    <h3>May Node and Express be with you.</h3>
+    <h1>May Node and Express be with you.</h1>
     <!-- looping through quotes array and creating strings with name and quote -->
     <ul class="quotes">
         <% for(var i=0; i<quotes.length; i++) {%>
@@ -22,16 +22,26 @@
             </li>
             <% } %>
     </ul>
-    <div>
-        <h2>Replace last quoted written by Master Yoda with a quote written by Darth Vader</h2>
-        <button id="update"> Darth Vader invades! </button>
-    </div>
+
+    <h2>Add a quote</h2>
+
     <!-- form element from index.html -->
     <form action="/quotes" method="POST">
         <input type="text" placeholder="name" name="name">
         <input type="text" placeholder="quote" name="quote">
         <button type="submit">Submit</button>
     </form>
+    
+    <div>
+        <h2>Replace last quoted written by Master Yoda with a quote written by Darth Vader</h2>
+        <button id="update"> Darth Vader invades! </button>
+    </div>
+
+    <div>
+        <h2>Delete Darth Vadar's first quote</h2>
+        <button id-"delete">Delete first Darth Vadar quote</button>
+    </div>
+   
     <script src="main.js"></script>
 </body>
 </html>

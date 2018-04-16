@@ -54,3 +54,7 @@ app.put('/quotes', (req, res) => {
             res.send(result)
         })
 });
+
+app.delete('/quotes', (req, res) => {
+    // Handle delete event here
+})
